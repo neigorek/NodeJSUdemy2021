@@ -1,0 +1,37 @@
+<h1>Catalog</h1>
+
+{{#if catalog.length}}
+    <div class="row">
+        <div class="col-4">
+            <div class="list-group" id="list-tab" role="tablist">
+                {{#each catalog}}
+                    <a class="list-group-item list-group-item-action" id="list-home-list"
+                       data-bs-toggle="list" href="#{{this.id}}" role="tab" aria-controls="list-home">{{this.title}}</a>
+                {{/each}}
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="tab-content" id="nav-tabContent">
+                {{#each catalog}}
+                    <div class="tab-pane fade show" id="{{this.id}}" role="tabpanel" aria-labelledby="list-home-list">
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="{{this.img}}" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{this.title}}</h5>
+                                        <p class="card-text">{{this.description}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+{{else}}
+    <p>Крсов пока нет!</p>
+{{/if}}

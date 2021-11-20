@@ -1,0 +1,27 @@
+<h1>Add</h1>
+
+<form action="/add" method="POST" class="needs-validation">
+    <div class="mb-3">
+        <label for="title" class="form-label">Name</label>
+        <input type="text" class="form-control" id="title" name="title">
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <input type="text" class="form-control" id="description" name="description">
+    </div>
+    <div class="mb-3 input-group">
+        <label for="price" class="form-label">Цена</label>
+        <div class="input-group has-validation">
+            <span class="input-group-text" id="inputGroupPrepend">$</span>
+            <input type="text" class="form-control" id="price" required name="price">
+            <div class="invalid-feedback">
+                Please choose price in dollars.
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="img" class="form-label">Image</label>
+        <input type="text" class="form-control" id="img" name="img">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

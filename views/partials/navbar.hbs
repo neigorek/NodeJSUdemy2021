@@ -1,0 +1,30 @@
+<ul class="nav nav-tabs">
+    <li class="nav-item active">
+    {{#if isHome}}
+        <a class="nav-link active" href="/">Home</a>
+    {{else}}
+        <a class="nav-link" href="/">Home</a>
+    {{/if}}
+    </li>
+    <li class="nav-item">
+    {{#if isCatalog}}
+        <a class="nav-link active" href="/catalog">Catalog</a>
+    {{else}}
+        <a class="nav-link" href="/catalog">Catalog</a>
+    {{/if}}
+    </li>
+    <li class="nav-item">
+    {{#if isAdd}}
+        <a class="nav-link active" href="/add">Add</a>
+    {{else}}
+        <a class="nav-link" href="/add">Add</a>
+    {{/if}}
+    </li>
+    <li class="nav-item">
+    {{#if isAbout}}
+        <a class="nav-link active" href="/about">About</a>
+    {{else}}
+        <a class="nav-link" href="/about">About</a>
+    {{/if}}
+    </li>
+</ul>

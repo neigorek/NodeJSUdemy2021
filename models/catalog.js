@@ -1,6 +1,7 @@
 const uuid = require('uuid');
 const fs = require('fs');
 const path = require('path');
+const constants = require("constants");
 
 class Catalog {
     constructor(title, description, price, img) {
@@ -11,15 +12,28 @@ class Catalog {
         this.id = uuid.v4();
     }
 
+    static async update(item) {
+        const catalog = await Catalog.getAll();
+        const index = catalog.findIndex((i) => i.id === item.id);
+        catalog[index] = item;
+        return new Promise((resolve, reject) => {
+            fs.writeFile(path.join(__dirname, '..', 'data', 'catalog.json'), JSON.stringify(catalog),
+                (err) => {
+                    if (err) reject(err);
+                    else resolve()
+                })
+        })
+    }
+
     async save() {
         const catalog = await Catalog.getAll();
         catalog.push(this.toJSON());
         return new Promise((resolve, reject) => {
             fs.writeFile(path.join(__dirname, '..', 'data', 'catalog.json'), JSON.stringify(catalog),
                 (err) => {
-                if (err) reject(err);
-                else resolve()
-            })
+                    if (err) reject(err);
+                    else resolve()
+                })
         })
     }
 
@@ -45,6 +59,11 @@ class Catalog {
                     }
                 }))
         })
+    }
+
+    static async getById(id) {
+        const catalog = await this.getAll();
+        return catalog.find(i => i.id === id);
     }
 }
 

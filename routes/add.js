@@ -9,8 +9,8 @@ router.get('/', ((req, res) => {
 }));
 
 router.post('/', ( async (req, res) => {
-    console.log(req.body)
     const catalog = new Catalog(req.body.title, req.body.description, req.body.price, req.body.img);
+    console.log(catalog);
     await catalog.save();
     res.status(200);
     res.redirect('/catalog');
